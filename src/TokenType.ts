@@ -1,4 +1,5 @@
-enum TokenType{
+
+export const enum TokenType{
     LF = 10, //NOVA LINHA
     ETF = 3, // FIM DE TEXTO
     // Atribuição
@@ -26,5 +27,5 @@ enum TokenType{
     GOTO = 65, // Palavra reservada 'goto' para ir a para uma linha especifica
     IF = 66, // Palavra reservada 'if' para condicionais
     END = 67, // Palavra reservada 'end' para a indicar a o fim do codigo
-    ERROR = 99 // Palvra de identificação de erro
+    ERROR = 99 // Palvra de identificação de erro  
 };
