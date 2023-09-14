@@ -1,27 +1,45 @@
-import { string } from "mathjs";
-import { TokenType } from "./TokenType";
-class Lexeme
-{
-  private _term: string;
-  private _type: TokenType;
-  private _line: number;
-  private _column: number;
+import TokenType from "./TokenType";
+import Token from "./Token";
 
-  constructor(character,type,line,column){
-    this._term = ''
-    this._term = ''.concat(this._term,character)
-    this._type = type
-    this._line = line
-    this._column = column
-  }
+class Lexeme {
+    private _term: string;
+    private _type: TokenType;
+    private _line: number;
+    private _column: number;
 
-  
-  public append(chracter,type) {
-    this._term = "".concat(this._term,chracter)
-    this._type = type
-  }
-  public getTerm() :string {
-    //return this._term.
-  }
+    constructor(character: string, type: TokenType, line: number, column: number) {
+        this._term = character
+        this._type = type
+        this._line = line
+        this._column = column
+    }
+
+    append(char: string, type: TokenType) {
+        this._term += char
+        this._type = type
+    }
+
+    get type(): TokenType {
+        return this._type;
+    }
+
+    get line(): number {
+        return this._line;
+    }
+
+    get term(): string {
+        return this._term
+    }
+
+    toString() {
+        return "'" + this._term + "' (" + this._line + ", " + this._column + ")";
+    }
+
+    toToken(final?: Token, address?: number): Token {
+        if (final == null) {
+            return new Token(this._type, address, this._line, this._column);
+        }
+        return new Token(this._type, -1, this._line, this._column);
+    }
 }
 
