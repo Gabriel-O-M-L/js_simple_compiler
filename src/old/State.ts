@@ -34,6 +34,7 @@ enum State {
     q32,
     q99,
     NONE,
+    ANY,
 }
 
 export default State

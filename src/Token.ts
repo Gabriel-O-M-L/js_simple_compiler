@@ -45,8 +45,11 @@ export default class Token {
         this._column = value;
     }
 
+    #minTwoDigits(n: number) {
+        return (n < 10 ? '0' : '') + n;
+    }
+
     toString(): string {
-        return "[" + this.typeUid + ", , ("
-            + this.line + ", " + this.column + ")]";
+        return `[${this.#minTwoDigits(this.typeUid)}, ${this.address > -1 ? this.#minTwoDigits(this.address) : "  "}, (${this.#minTwoDigits(this.line)}, ${this.#minTwoDigits(this.column)})]`;
     }
 }

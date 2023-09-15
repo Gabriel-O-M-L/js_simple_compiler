@@ -1,7 +1,7 @@
 import TokenType from "./TokenType";
 import Token from "./Token";
 
-class Lexeme {
+export default class Lexeme {
     private _term: string;
     private _type: TokenType;
     private _line: number;
@@ -35,8 +35,8 @@ class Lexeme {
         return "'" + this._term + "' (" + this._line + ", " + this._column + ")";
     }
 
-    toToken(final?: Token, address?: number): Token {
-        if (final == null) {
+    toToken(address?: number): Token {
+        if (address != null) {
             return new Token(this._type, address, this._line, this._column);
         }
         return new Token(this._type, -1, this._line, this._column);
