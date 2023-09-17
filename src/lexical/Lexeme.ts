@@ -35,9 +35,9 @@ export default class Lexeme {
         return "'" + this._term + "' (" + this._line + ", " + this._column + ")";
     }
 
-    toToken(address?: number): Token {
-        if (address != null) {
-            return new Token(this._type, address, this._line, this._column);
+    toToken(symbolAddress?: number): Token {
+        if (symbolAddress != null) {
+            return new Token(this._type, symbolAddress, this._line, this._column);
         }
         return new Token(this._type, -1, this._line, this._column);
     }

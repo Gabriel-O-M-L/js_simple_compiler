@@ -2,9 +2,12 @@ import Token from "./Token";
 import Lexeme from "./Lexeme";
 import TokenType from "./TokenType";
 
-export default class LexicalAnalysis {
+export default class LexicalAnalyzer {
     error: boolean = false
     source: string;
+    /**
+     * Key represents variable or integer and value the declaration index on the code
+     */
     symbolTable = new Map<string, number>();
     tokens: Token[];
     lexeme: Lexeme;
@@ -333,7 +336,7 @@ export default class LexicalAnalysis {
      * Estado responsavel pelo reconhecimento do delimitador de nova linha
      */
     q03() {
-        this.lexeme = new Lexeme('\n', TokenType.LF, this.line, this.column);
+        this.lexeme = new Lexeme('\n', TokenType.END_OF_LINE, this.line, this.column);
         this.addToken();
         this.line++;
         this.column = 0;
@@ -343,7 +346,7 @@ export default class LexicalAnalysis {
      * Estado responsavel pelo reconhecimento do delimitador de fim de texto
      */
     q04() {
-        this.lexeme = new Lexeme('\0', TokenType.ETX, this.line, this.column);
+        this.lexeme = new Lexeme('\0', TokenType.END_OF_INPUT, this.line, this.column);
 
         this.addToken();
     }

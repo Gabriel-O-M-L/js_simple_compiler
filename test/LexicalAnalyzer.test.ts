@@ -1,11 +1,11 @@
 import {test} from '@jest/globals';
 import SAMPLE_CODE from "../static/SAMPLE_CODE";
-import LexicalAnalysis from "../src/LexicalAnalysis";
+import LexicalAnalyzer from "../src/lexical/LexicalAnalyzer";
 import EXPECTED_LEXICAL_OUTPUT from "./EXPECTED_LEXICAL_OUTPUT";
 
-let lexicalInstance: LexicalAnalysis
+let lexicalInstance: LexicalAnalyzer
 beforeEach(() => {
-    lexicalInstance = new LexicalAnalysis()
+    lexicalInstance = new LexicalAnalyzer()
     lexicalInstance.parser(SAMPLE_CODE)
 })
 
@@ -19,6 +19,10 @@ test('Quantity of tokens', () => {
 
 test('Quantity of symbols', () => {
     expect(lexicalInstance.symbolTable.size).toBeGreaterThan(0);
+});
+
+test('SS', () => {
+    expect(lexicalInstance.symbolTable).toEqual(new Map());
 });
 
 test('Should match expected output', () => {
