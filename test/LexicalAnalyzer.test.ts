@@ -21,10 +21,6 @@ test('Quantity of symbols', () => {
     expect(lexicalInstance.symbolTable.size).toBeGreaterThan(0);
 });
 
-test('SS', () => {
-    expect(lexicalInstance.symbolTable).toEqual(new Map());
-});
-
 test('Should match expected output', () => {
     expect(lexicalInstance.tokens.map(t => t.toString())).toEqual(EXPECTED_LEXICAL_OUTPUT);
 });
